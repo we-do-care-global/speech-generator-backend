@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: speech-generator-backend
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: OLLAMA_URL
+        value: http://localhost:11434
+      - key: OLLAMA_MODEL
+        value: gemma4:26b
+      - key: AI_PROVIDER
+        value: ollama
+    # These need to be set in Render dashboard (secrets):
+    # PADDLE_API_KEY
+    # PADDLE_ENV
+    # RESEND_API_KEY
+    # GEMINI_API_KEY
+    # GEMINI_MODEL
